@@ -1,16 +1,13 @@
 
-import './App.css'
+import AppRoutes from "./routes/AppRoutes";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
-  
-  return (
-    <>
-         <div className ="m-4 flex items-center justify-center" > 
-          <h1 className ="tex-5xl text-red-800">
-             Dashboard 
-             </h1>
-          </div>
-    </>
-  )
+  return {
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter> 
+   
+  };  
 }
-export default App
+export default App;
