@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import StatCard from '../components/StatCard';
-import { supabase } from '../config/supabase'; // Asegúrate de que esta ruta apunte a tu archivo supabase.js
+import { supabase } from '../config/supabase'; 
+import Footer from '../components/Footer';
 
 function Dashboard() {
   const [counts, setCounts] = useState({
@@ -69,6 +70,6 @@ function Dashboard() {
       </div>
     </div>
   );
+  
 }
-
 export default Dashboard;
