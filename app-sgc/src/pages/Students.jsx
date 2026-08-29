@@ -28,15 +28,23 @@ function Students() {
 
   // Filtrar la lista de estudiantes según lo que se escriba en el buscador
   const filteredStudents = students.filter((student) => {
-    const term = searchTerm.toLowerCase();
-    const firstName = (student.first_name || "").toLowerCase();
-    const lastName = (student.last_name || "").toLowerCase();
-    const email = (student.email || "").toLowerCase();
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return true;
+
+    const id = String(student.student_id || student.studentId || "").toLowerCase();
+    const firstName = String(student.first_name || student.firstName || "").toLowerCase();
+    const lastName = String(student.last_name || student.lastName || "").toLowerCase();
+    const fullName = `${firstName} ${lastName}`;
+    const email = String(student.email || "").toLowerCase();
+    const phone = String(student.phone_number || student.phoneNumber || "").toLowerCase();
 
     return (
+      id.includes(term) ||
       firstName.includes(term) ||
       lastName.includes(term) ||
-      email.includes(term)
+      fullName.includes(term) ||
+      email.includes(term) ||
+      phone.includes(term)
     );
   });
 
@@ -62,11 +70,11 @@ function Students() {
             txtButton="Nuevo Estudiante"
           />
 
-          {/* BARRA DE BÚSQUEDA IGUAL A LA DEL PROFESOR */}
+          {/* BARRA DE BÚSQUEDA */}
           <div className="mt-4 mb-4">
             <input
               type="text"
-              placeholder="Buscar estudiante..."
+              placeholder="Buscar por ID, nombre, apellido, correo o celular..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"

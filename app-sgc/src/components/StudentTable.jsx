@@ -4,6 +4,7 @@ function StudentTable({ students = [], onEdit, onDelete }) {
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-gray-100/70 border-b border-gray-300 text-gray-700 text-sm font-semibold">
+            <th className="py-3 px-6">ID </th>
             <th className="py-3 px-6">Nombre</th>
             <th className="py-3 px-6">Apellido</th>
             <th className="py-3 px-6">Correo</th>
@@ -15,13 +16,16 @@ function StudentTable({ students = [], onEdit, onDelete }) {
         <tbody className="divide-y divide-gray-200 text-sm text-gray-700">
           {students.length === 0 ? (
             <tr>
-              <td colSpan="5" className="py-6 text-center text-gray-500">
+              <td colSpan="6" className="py-6 text-center text-gray-500">
                 No hay estudiantes registrados.
               </td>
             </tr>
           ) : (
             students.map((student) => (
-              <tr key={student.student_id} className="hover:bg-gray-50/50 transition-colors">
+              <tr key={student.student_id || student.studentId} className="hover:bg-gray-50/50 transition-colors">
+                <td className="py-3.5 px-6 font-semibold text-gray-900">
+                  {student.student_id || student.studentId}
+                </td>
                 <td className="py-3.5 px-6 font-medium text-gray-800">
                   {student.first_name}
                 </td>
@@ -42,7 +46,7 @@ function StudentTable({ students = [], onEdit, onDelete }) {
                     Editar
                   </button>
                   <button 
-                    onClick={() => onDelete && onDelete(student.student_id)}
+                    onClick={() => onDelete && onDelete(student.student_id || student.studentId)}
                     className="text-gray-600 hover:text-red-600 transition-colors"
                   >
                     Eliminar
