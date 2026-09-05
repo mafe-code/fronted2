@@ -1,10 +1,4 @@
-
-function Header(
-    {title,
-     description,
-      txtButton }
-    ) 
-    {
+function Header({ title, description, txtButton, onButtonClick }) {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-8">
@@ -14,7 +8,10 @@ function Header(
         </div>
         <div>
           <button
-            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+            type="button"
+            onClick={onButtonClick}
+            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded cursor-pointer transition-colors"
+          >
             {txtButton}
           </button>
         </div>
