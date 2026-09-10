@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
-import StudentTable from "../components/StudentTable";
 import Footer from "../components/Footer";
-import Studentform from "../components/Studentform";
+import StudentTable from "../components/Tablas/StudentTable";
+import Studentform from "../components/Form/Studentform";
+import { useModal } from "../components/Form/useModal"; 
 import { 
   getStudents, 
   updateStudent, 
   deleteStudent 
 } from "../services/studentService";
-import { useModal } from "../components/useModal"; 
 
 function Students() {
   const [students, setStudents] = useState([]);
@@ -253,4 +253,4 @@ function Students() {
   );
 }
 
-export default Students;
+export default Students; 

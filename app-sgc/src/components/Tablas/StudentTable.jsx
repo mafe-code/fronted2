@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function StudentTable({ students = [], onEdit, onDelete }) {
   return (
     <div className="bg-white border border-gray-300 rounded-xl overflow-hidden shadow-sm">

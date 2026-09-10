@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createStudent } from '../services/studentService'; // Ajusta la ruta según la carpeta de tus servicios
+import { createStudent } from '../../services/studentService'; // Ajusta la ruta según la carpeta de tus servicios
 
 function Studentform({ onClose, onStudentAdded }) {
   const [formData, setFormData] = useState({
@@ -27,15 +27,15 @@ function Studentform({ onClose, onStudentAdded }) {
     setErrorMsg(null);
 
     try {
-      // Guardar en Supabase
+      
       await createStudent(formData);
       
-      // Recargar la tabla en la pantalla principal
+      
       if (onStudentAdded) {
         await onStudentAdded();
       }
 
-      // Cerrar el modal
+      
       if (onClose) {
         onClose();
       }
